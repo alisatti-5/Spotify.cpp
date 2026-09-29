@@ -93,7 +93,6 @@ void displaySubscriptionCatalog()
         cout << "---------------------------------------------------\n";
     }
 }
-
 int main()
 {
     int userMenuSelection = 0;
@@ -110,7 +109,14 @@ int main()
         cout << "3. Exit Program\n";
         cout << "Choose option (1-3): ";
 
-        cin >> userMenuSelection;
+        if (!(cin >> userMenuSelection)) 
+        {
+            // Clear input error state and discard invalid characters
+            cin.clear();
+            cin.ignore(1000, '\n');
+            cout << "\n[Error Alert]: Invalid input. Please enter a number between 1 and 3.\n";
+            continue;
+        }
 
         switch (userMenuSelection)
         {
